@@ -11,9 +11,11 @@
       {
         "type": "ansible-local",
         "playbook_file": "playbook.yml"
-      },
+      }
   ],
   "builders": [{
+    "account_id": "433291100556",
+    "s3_bucket": "packeraws",
     "type": "amazon-instance",
     "access_key": "{{user `aws_access_key`}}",
     "secret_key": "{{user `aws_secret_key`}}",
