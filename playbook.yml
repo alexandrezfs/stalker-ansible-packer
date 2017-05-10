@@ -2,3 +2,34 @@
 
 - hosts: all
   tasks:
+
+  - name: Install apt packages
+    apt: pkg={{ item }} state=installed
+    become: true
+    with_items:
+      - python
+      - python-pip
+      - python-dev
+      - build-essential
+
+  - name: Create app folder
+    become: true
+    file: path=/opt/stalker state=directory owner=root group=root mode=0744
+
+  - name: Untar app
+    become: true
+    unarchive:
+      src: /tmp/app.tar.gz
+      dest: /opt/stalker
+
+  - name: Upgrade pip
+    become: true
+    pip:
+      name: pip
+      extra_args: --upgrade
+
+  - name: Install pip requirments
+    become: true
+    pip:
+      requirements: /opt/stalker/requirements.txt
+      extra_args: --upgrade

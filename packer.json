@@ -5,13 +5,18 @@
   },
   "provisioners": [
     {
-        "type": "shell",
-        "script": "provision.sh"
-      },
-      {
-        "type": "ansible-local",
-        "playbook_file": "playbook.yml"
-      }
+      "type": "file",
+      "source": "app.tar.gz",
+      "destination": "/tmp/app.tar.gz"
+    },
+    {
+      "type": "shell",
+      "script": "provision.sh"
+    },
+    {
+      "type": "ansible-local",
+      "playbook_file": "playbook.yml"
+    }
   ],
   "builders": [{
     "type": "amazon-ebs",
@@ -23,8 +28,8 @@
     "ssh_username": "ubuntu",
     "ami_name": "social_network_stalker_{{timestamp}}",
     "tags": {
-        "app": "social_network_stalker"
-      },
+      "app": "social_network_stalker"
+    },
     "run_tags": {
         "app": "social_network_stalker"
       }
