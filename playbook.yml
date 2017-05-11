@@ -14,7 +14,7 @@
 
   - name: Create app folder
     become: true
-    file: path=/opt/stalker state=directory owner=root group=root mode=0744
+    file: path=/opt/stalker state=directory owner=ubuntu group=ubuntu mode=0744
 
   - name: Untar app
     become: true
@@ -26,10 +26,4 @@
     become: true
     pip:
       name: pip
-      extra_args: --upgrade
-
-  - name: Install pip requirments
-    become: true
-    pip:
-      requirements: /opt/stalker/requirements.txt
       extra_args: --upgrade

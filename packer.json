@@ -16,6 +16,11 @@
     {
       "type": "ansible-local",
       "playbook_file": "playbook.yml"
+    },
+    {
+      "type": "file",
+      "source": "firstboot.sh",
+      "destination": "/opt/stalker/firstboot.sh"
     }
   ],
   "builders": [{
